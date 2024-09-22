@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 interface Strategy {
     void move(char p1, char p2);
 }
@@ -41,26 +43,78 @@ class Hero {
 }
 
 
-
 public class Task1
 {
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		Hero hero = new Hero(new Walk());
-		hero.move('A', 'B');
+        Scanner scanner = new Scanner(System.in);
 		
-		hero.setNewStrategy(new Fly());
-		hero.move('B', 'C');
-		
-		hero.setNewStrategy(new Ride());
-		hero.move('C', 'A');
+        while (true)
+        {
+            System.out.println("\nChoose the strategy:");
+            System.out.println("1 - Walk");
+            System.out.println("2 - Fly");
+            System.out.println("3 - Ride");
+            System.out.println("0 - Exit");
+
+
+            int choice;
+
+            try
+            {
+                choice = scanner.nextInt();
+            }
+            catch(Exception e)
+            {
+                System.out.println("Wrong...");
+                scanner.nextLine();
+                continue;
+            }
+
+            if (choice == 0) {
+                System.out.println("Exit...");
+                break;
+            }
+
+            switch (choice) {
+                case 1:
+                    hero.setNewStrategy(new Walk());
+                    break;
+                case 2:
+                    hero.setNewStrategy(new Fly());
+                    break;
+                case 3:
+                    hero.setNewStrategy(new Ride());
+                    break;
+                default:
+                    System.out.println("Wrong choice");
+                    continue;
+            }
+
+            System.out.print("Input the start point: ");
+            char from = scanner.next().charAt(0);
+
+            System.out.print("Input the end point: ");
+            char to = scanner.next().charAt(0);
+
+            hero.move(from, to);
+        }
+
+        scanner.close();
 	}
 }
 
 
 
 // Output:
-// The hero is walking from A to B
-// The hero is flying from B to C
-// The hero is riding from C to A
+// Choose the strategy:
+// 1 - Walk
+// 2 - Fly
+// 3 - Ride
+// 0 - Exit
+// 2
+// Input the start point: A
+// Input the end point: B
+// The hero is flying from A to B
 
 
