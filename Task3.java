@@ -37,17 +37,25 @@ class VocabularyReader {
     private Path path;
     private Map<String, String> vocabulary = new HashMap<>();
     
-    VocabularyReader(String file_path) throws InvalidFileFormatException {
-        this.path = Paths.get(file_path);
+    VocabularyReader(Path path) throws FileReadException {
+        this.path = path;
+        String fileName = path.getFileName().toString();
+
+        // Проверяем, что файл существует 
+        if (!Files.exists(path)) 
+        {
+            throw new FileReadException(path.toString());
+        }
+
+        // Проверяем, что файл имеет правильный формат
+        if (!fileName.endsWith(".txt")) 
+        {
+            throw new FileReadException("File read exception: " + fileName);
+        }
     }
 
     // Метод для чтения слов из файла и заполнения словаря vocabulary
-    public void readFile() throws FileReadException {
-        if (!Files.exists(path)) 
-        {
-            throw new FileReadException("File doest not exist: " + path.toString());
-        }
-        
+    public void readFile() throws InvalidFileFormatException {        
         try 
         {
             List<String> lines = Files.readAllLines(path);
@@ -60,6 +68,10 @@ class VocabularyReader {
                     String word = parts[0].trim().toLowerCase();  // Исходное слово
                     String translation = parts[1].trim();         // Перевод
                     this.vocabulary.put(word, translation);       // Добавляем в Map 
+                }
+                else
+                {
+                    throw new InvalidFileFormatException("Invalid file format exception");
                 }
             }
         }
@@ -133,36 +145,35 @@ class VocabularyReader {
 }
 
 
-
-
-
 public class Task3 {
-    public static void main(String[] args) throws InvalidFileFormatException {
+    public static void main(String[] args) {
         Path path = Paths.get("Vocabulary.txt");
-        String file_name = path.getFileName().toString();
-        
-        if (!file_name.endsWith(".txt"))
+
+        try 
         {
-            throw new InvalidFileFormatException("Invalid file format: " + file_name);
-        }
+            // Объект словаря 
+            VocabularyReader vocabularyReader = new VocabularyReader(path);
 
-        // Объект словаря 
-        VocabularyReader vocabularyReader = new VocabularyReader(file_name);
-
-        try (Scanner scanner = new Scanner(System.in)) {
-            System.out.print("Input the text: ");
-            String text_for_translate = scanner.nextLine();
-            
-            try
+            try (Scanner scanner = new Scanner(System.in)) 
             {
-                vocabularyReader.readFile();
-                String transaltion = vocabularyReader.translateText(text_for_translate);
-                System.out.println(transaltion);
+                System.out.print("Input the text: ");
+                String text_for_translate = scanner.nextLine();
+                
+                try
+                {
+                    vocabularyReader.readFile();
+                    String transaltion = vocabularyReader.translateText(text_for_translate);
+                    System.out.println(transaltion);
+                }
+                catch (InvalidFileFormatException e)
+                {
+                    e.printStackTrace();
+                }
             }
-            catch (FileReadException e)
-            {
-                e.printStackTrace();
-            }
+        } 
+        catch (FileReadException e) 
+        {
+            e.printStackTrace(); 
         }
 	}
 }
