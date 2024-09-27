@@ -57,8 +57,11 @@ public class Task4 {
 
     // метод, возвращающий список квадратов всех встречающихся только один раз элементов списка
     private static <T extends Number> List<Double> squareNumbers (List<T> number_list_squire) {
+        Map<T, Long> map_group = number_list_squire.stream()
+                        .collect(Collectors.groupingBy(n -> n, Collectors.counting()));
+
         return number_list_squire.stream()
-                        .distinct()
+                        .filter(n -> map_group.get(n) == 1)
                         .map(n -> Math.pow(n.doubleValue(), 2))
                         .collect(Collectors.toList());
     }
@@ -90,7 +93,7 @@ public class Task4 {
 // Output:
 // 2.625
 // [PRIVET _new_ , VOY _new_ , AURA _new_ ]
-// [1.0, 4.0, 9.0, 16.0]
+// [9.0]
 // 3th
 // 8
 // {v=oice, h=aor, j=orjo}
