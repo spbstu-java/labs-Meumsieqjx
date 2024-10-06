@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import Controller.Lab1Controller?>
+
+<StackPane fx:id="stackPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Lab4Controller">
+
+    <!-- Четвертая страница -->
+    <VBox fx:id="page4" visible="true">
+        <VBox alignment="top_center"> 
+        <Label text="Лаб 4: Методы Stream API" style="-fx-font-family: 'Arial'; -fx-font-size: 27;">
+            <VBox.margin>
+                <Insets top="10"/>
+            </VBox.margin>
+        </Label>
+        </VBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="1) Возврат среднего значения списка целых чисел:" style="-fx-font-family: 'Arial'; -fx-font-size: 16;">
+                <HBox.margin>
+                    <Insets top="15" left="10"/> 
+                </HBox.margin>
+            </Label>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="text_field1_lab4" prefWidth="170">
+                <HBox.margin>
+                    <Insets top="10" left="10"/> 
+                </HBox.margin>
+            </TextField>
+            <Button fx:id="method1_btn" text="Выполнить" style="-fx-pref-width: 90; -fx-pref-height: 30;">
+                <VBox.margin>
+                    <Insets top="10" left="15"/>
+                </VBox.margin>
+            </Button>
+        </HBox>
+
+        
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="2) Привести все строки в списке в верхний регистр и добавить к ним префикс «_new_»:" style="-fx-font-family: 'Arial'; -fx-font-size: 16;">
+                <HBox.margin>
+                    <Insets top="10" left="10"/> 
+                </HBox.margin>
+            </Label>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="text_field2_lab4" prefWidth="170">
+                <HBox.margin>
+                    <Insets top="10" left="10"/> 
+                </HBox.margin>
+            </TextField>
+            <Button fx:id="method2_btn" text="Выполнить" style="-fx-pref-width: 90; -fx-pref-height: 30;">
+                <VBox.margin>
+                    <Insets top="10" left="15"/>
+                </VBox.margin>
+            </Button>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="3) Возврат списка квадратов всех встречающихся только один раз элементов списка:" style="-fx-font-family: 'Arial'; -fx-font-size: 16;">
+                <HBox.margin>
+                    <Insets top="10" left="10"/> 
+                </HBox.margin>
+            </Label>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="text_field3_lab4" prefWidth="170">
+                <HBox.margin>
+                    <Insets top="10" left="10"/> 
+                </HBox.margin>
+            </TextField>
+            <Button fx:id="method3_btn" text="Выполнить" style="-fx-pref-width: 90; -fx-pref-height: 30;">
+                <VBox.margin>
+                    <Insets top="10" left="15"/>
+                </VBox.margin>
+            </Button>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="4) Получить последний элемент:" style="-fx-font-family: 'Arial'; -fx-font-size: 16;">
+                <HBox.margin>
+                    <Insets top="10" left="10"/> 
+                </HBox.margin>
+            </Label>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="text_field4_lab4" prefWidth="170">
+                <HBox.margin>
+                    <Insets top="10" left="10"/> 
+                </HBox.margin>
+            </TextField>
+            <Button fx:id="method4_btn" text="Выполнить" style="-fx-pref-width: 90; -fx-pref-height: 30;">
+                <VBox.margin>
+                    <Insets top="10" left="15"/>
+                </VBox.margin>
+            </Button>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="5) Вернуть сумму четных чисел или 0:" style="-fx-font-family: 'Arial'; -fx-font-size: 16;">
+                <HBox.margin>
+                    <Insets top="10" left="10"/> 
+                </HBox.margin>
+            </Label>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="text_field5_lab4" prefWidth="170">
+                <HBox.margin>
+                    <Insets top="10" left="10"/> 
+                </HBox.margin>
+            </TextField>
+            <Button fx:id="method5_btn" text="Выполнить" style="-fx-pref-width: 90; -fx-pref-height: 30;">
+                <VBox.margin>
+                    <Insets top="10" left="15"/>
+                </VBox.margin>
+            </Button>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="6) Преобразовать все строки в списке в Map, где первый символ – ключ, оставшиеся – значение:" style="-fx-font-family: 'Arial'; -fx-font-size: 16;">
+                <HBox.margin>
+                    <Insets top="10" left="10"/> 
+                </HBox.margin>
+            </Label>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="text_field6_lab4" prefWidth="170">
+                <HBox.margin>
+                    <Insets top="10" left="10"/> 
+                </HBox.margin>
+            </TextField>
+            <Button fx:id="method6_btn" text="Выполнить" style="-fx-pref-width: 90; -fx-pref-height: 30;">
+                <VBox.margin>
+                    <Insets top="10" left="15"/>
+                </VBox.margin>
+            </Button>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER">
+            <TextArea fx:id="text_area1_lab4" prefWidth="462" prefHeight="160" editable="false">
+                <HBox.margin>
+                    <Insets top="10"/> 
+                </HBox.margin>
+            </TextArea>
+        </HBox>
+        
+
+        <VBox alignment="top_center"> 
+        <Button fx:id="back_btn" text="Назад" style="-fx-pref-width: 100; -fx-pref-height: 30;">
+            <VBox.margin>
+                <Insets top="10"/>
+            </VBox.margin>
+        </Button>
+        </VBox>
+
+    </VBox>
+
+</StackPane>

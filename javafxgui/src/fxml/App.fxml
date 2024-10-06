@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import Controller.AppController?>
+
+<StackPane fx:id="stackPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AppController">
+
+    <!-- Главное окно -->
+    <VBox fx:id="page1" alignment="center" spacing="20">
+        <VBox.margin>
+            <Insets top="120"/>
+        </VBox.margin>
+        <Label fx:id="start_label" text="LABS" style="-fx-font-family: 'Arial'; -fx-font-size: 100; -fx-font-weight: bold;"/>
+        
+        <ComboBox fx:id="combo_box" prefWidth="220">
+            <VBox.margin>
+                <Insets top="20"/> 
+            </VBox.margin>
+        </ComboBox>
+        
+        <Button fx:id="start_btn" text="OK" style="-fx-pref-width: 100; -fx-pref-height: 30; -fx-font-weight: bold;">
+            <VBox.margin>
+                <Insets top="110"/> 
+            </VBox.margin>
+        </Button>
+    </VBox>
+
+</StackPane>
